@@ -1,89 +1,85 @@
-#🦿 RehabLab – Smart Joint Angle Monitoring for Physical Rehabilitation
+💡 REHABLAB
+Smart Joint Angle Monitoring System for Physical Rehabilitation
+📘 Introduction
+REHABLAB is an embedded system that uses a gyroscope sensor to track the movement angles of a patient's limb (e.g., leg or knee) during physical rehabilitation. The system helps monitor the range of motion (ROM) and provides feedback based on sensor data to support recovery after injury or surgery.
 
-📘 Project Overview
-REHABLAB is a hardware-based system designed to measure joint movement angles using a gyroscope sensor during physical rehabilitation exercises. It helps track a patient’s progress after injuries (e.g., knee or leg trauma) and offers real-time feedback to encourage and guide proper movement within the desired range of motion (ROM).
+It’s designed to be part of a complete rehab ecosystem, including:
 
-The system is part of a larger ecosystem that includes:
-
-📱 A mobile application
+📱 A mobile app
 
 💻 A Windows desktop platform
-These platforms visualize the patient's progress, provide exercise tutorials, and deliver personalized rehabilitation sessions.
+These platforms visualize the patient’s progress, provide video-guided exercises, and help therapists and patients track recovery over time.
 
-🧩 Hardware Components
-🔌 Arduino board
+🧠 Features
+Real-Time Angle Tracking:
+Continuously calculates roll, pitch, and yaw from the MPU6050 gyroscope.
 
-🧭 MPU6050 Gyroscope/Accelerometer sensor
+Gyroscope Calibration:
+Automatically calibrates the sensor on startup for accurate angle measurements.
 
-🖥️ I2C LCD display (optional for local output)
+Serial Communication Support:
+Sends sensor data (angles) via serial or ESP to the connected mobile or desktop app.
 
-⚡ ESP module or Serial communication (to transmit data)
-
-🔍 How It Works
-On startup, the gyroscope sensor is automatically calibrated.
-
-In each loop, the device:
-
-Reads acceleration and angular velocity.
-
-Calculates three angles:
-
-Roll
-
-Pitch
-
-Yaw
-
-Sends these values every 500 milliseconds to a connected device (phone or PC).
-
-The values help monitor how much the joint is moving, and whether it falls within the acceptable therapeutic range.
-
-🏃‍♂️ Use Case Example
-A physical therapist attaches the device to the patient’s knee.
-
-The mobile or desktop app is opened.
-
-The patient begins performing a rehabilitation exercise.
-
-The system:
-
-Tracks the knee angle in real time.
-
-Compares it to expected values.
-
-Provides immediate feedback on the screen.
-
-Stores the progress.
-
-📲 Platform Integration
-✅ Mobile Application (Android/iOS):
-Displays real-time motion data, tracks daily progress, and includes video tutorials.
-
-✅ Windows Desktop Platform:
-Offers a comprehensive dashboard for therapists and patients, including analytics and advanced visualization.
-
-🧠 Technical Notes (Arduino Code)
-Developed in C++ using Arduino IDE.
-
-Uses I2C communication to interface with the MPU6050 sensor.
-
-Gyroscope data is calibrated and integrated over time to calculate angles.
-
-Outputs data in a serial format:
+Friendly Output Format:
+Data is output in a simple and consistent format, making it easy to process:
 
 php-template
-
+Copy
+Edit
 ;<Roll>;<Pitch>;<Yaw>
-Example:
+Easy Integration:
+Works with both mobile and PC interfaces for monitoring and displaying feedback.
+
+⚙️ Hardware Requirements
+Arduino UNO/Nano or compatible board
+
+MPU6050 Gyroscope/Accelerometer module
+
+(Optional) I2C LCD display (16x2)
+
+ESP8266 or ESP32 module (for wireless communication, if used)
+
+🧩 Software Requirements
+Arduino IDE
+
+Libraries Used:
+
+Wire.h
+
+LiquidCrystal_I2C.h
+
+Baud Rate: 115200 (for serial communication)
+
+🖥️ Platform Integration
+✅ Mobile App
+Displays real-time joint angle data, provides guided exercises, and stores progress logs.
+
+✅ Windows Platform
+Offers detailed analytics, charts, and patient management tools for therapists.
+
+📂 Output Example
+The Arduino sends the following format every 500ms:
 
 ini
 Copy
 Edit
-;5.3;-1.2;0.8
-🚀 Future Improvements
-Integrate machine learning models to assess movement quality.
+;4.23;-2.10;1.75
+Where:
 
-Support more joints and movement types.
+Roll = 4.23°
 
-Cloud syncing and personalized rehabilitation plans.
+Pitch = -2.10°
 
+Yaw = 1.75°
+
+🗃️ Logging & Persistence
+Mobile and desktop platforms log the patient’s progress and display it over time.
+
+Video tutorials are embedded within the applications to assist users with exercises.
+
+🧪 Future Improvements
+Add BLE support for wireless real-time streaming.
+
+Integrate ML models for automatic movement quality evaluation.
+
+Cloud-based patient tracking and therapist dashboards.
