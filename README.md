@@ -6,10 +6,6 @@ The **REHABLAB** system is a wearable device built to monitor joint angles durin
 It uses a gyroscope sensor to calculate the **roll**, **pitch**, and **yaw** of the limb in real-time, helping both patients and therapists track recovery progress efficiently.  
 The system integrates with mobile and desktop platforms to provide a full rehab monitoring ecosystem.
 
-###### image of the program:
-<div>
-  <img src="https://github.com/user-attachments/assets/f1968ef5-57a3-4ad7-a58d-702573e5ff21" >
-</div>
 
 ## Features ✨
 
